@@ -4,7 +4,7 @@ const app = require("../../src/app"); // Import your Express app
 const mongoose = require("mongoose");
 const { expect } = chai;
 
-describe("GET /users", () => {
+describe("/users route", () => {
   let server;
   let authToken =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1N2ViMTk2MGY2Yzk5NmRmZTQxZDNmYSIsImlhdCI6MTcwMzAxNTkyOCwiZXhwIjoxNzA1NjA3OTI4fQ.t_ccuilt03qDazN4KqIbBJouaobBLNI_mIA5MzLqaw8".trim();

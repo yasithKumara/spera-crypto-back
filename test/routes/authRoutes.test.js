@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const { expect } = chai;
 
 // Wrap your tests in a describe block
-describe("User Registration", () => {
+describe("/auth route", () => {
   let server;
 
   // Use a "before" hook to wait till server connect to database
