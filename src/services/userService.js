@@ -40,7 +40,6 @@ const asyncHandler = require("express-async-handler");
  * @param userId
  */
 const getUser = async (filter) => {
-    console.log(filter)
     const user = await userRepository.findOne(filter);
     return user;
   };

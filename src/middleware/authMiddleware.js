@@ -19,14 +19,11 @@ const protect = asyncHandler(async (req, res, next) => {
       //verify token
       const decoded = jwt.verify(token.trim(), secret.trim());
 
-      console.log(decoded)
-
       //get user from token
       req.user = await User.findById(decoded.id).select("-password");
 
       next();
     } catch (error) {
-      console.log(error);
       res.status(401)
       throw new ApiError(errors.Unauthorized);
     }
@@ -65,7 +62,6 @@ const isOwner = asyncHandler(async (req, res, next) => {
 
       next();
     } catch (error) {
-      console.log(error);
       res.status(401);
       throw new Error("Not Authorized");
     }
@@ -101,7 +97,6 @@ const isAdmin = asyncHandler(async (req, res, next) => {
 
       next();
     } catch (error) {
-      console.log(error);
       res.status(401);
       res.statusCode(401);
       throw new Error("Not Authorized");

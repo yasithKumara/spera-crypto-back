@@ -36,7 +36,6 @@ const Coin = require("../models/coinModel");
  * @return {Promise<>}
  */
  const findById = async (id) => {
-    console.log(id)
     return Coin.findById(id);
 //   return findOne({ _id: id });
 };

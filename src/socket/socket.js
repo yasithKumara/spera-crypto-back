@@ -28,7 +28,6 @@ async function subscribeToCoinbaseTicker() {
 
       websocket.on('message', data => {
         if(data.type = "ticker" && data.product_id){
-            //console.log(data.product_id)
             try {
                 const updatedCoin = Coin.findOneAndUpdate(
                   { symbol: data.product_id.replace(/-USD$/, '') },

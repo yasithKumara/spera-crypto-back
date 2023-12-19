@@ -37,8 +37,6 @@ describe("GET /users", () => {
       .get(`/users/${existingUserId}`)
       .set("Authorization", `Bearer ${authToken}`);
 
-    console.log(response.body);
-
     expect(response.status).to.equal(200);
     expect(response.body).to.be.an("object");
     expect(response.body).to.have.property("_id");

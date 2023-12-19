@@ -35,7 +35,6 @@ const update = async (object) => {
  * @return {Promise<>}
  */
 const findById = async (id) => {
-  console.log(id);
   return User.findById(id).populate("favorite_coins");
   //   return findOne({ _id: id });
 };
