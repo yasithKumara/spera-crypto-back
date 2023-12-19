@@ -48,9 +48,10 @@ const isOwner = asyncHandler(async (req, res, next) => {
     try {
       //get tokenfrom header
       token = req.headers.authorization.split(" ")[1];
+      let secret = process.env.JWT_SECRET
 
       //verify token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token.trim(), secret.trim());
 
       //get user from token
       const user = await User.findById(decoded.id).select("-password");

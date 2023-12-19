@@ -13,13 +13,11 @@ async function subscribeToCoinbaseTicker() {
         cryptoCurrencies,
         'wss://ws-feed.exchange.coinbase.com',
         null,
-        //["ticker"],
       );
 
       let i = 1;
 
       setTimeout(function() {
-        console.log("One second has passed!");
         websocket.unsubscribe({ channels: ['heartbeat'] });
         websocket.subscribe({
             "type": "subscribe",
@@ -27,12 +25,6 @@ async function subscribeToCoinbaseTicker() {
             "channels": ["ticker"]
         })
       }, 3000);
-     
-
-    //   websocket.on('message', data => {
-    //     i++
-    //     console.log(data, i)
-    //   });
 
       websocket.on('message', data => {
         if(data.type = "ticker" && data.product_id){
@@ -44,7 +36,6 @@ async function subscribeToCoinbaseTicker() {
                   { new: true } // Set to true to return the updated document
                 ).exec();
             
-                //console.log('Updated coin:', updatedCoin);
               } catch (error) {
                 console.error('Error updating coin:', error);
               }
@@ -58,41 +49,6 @@ async function subscribeToCoinbaseTicker() {
         /* ... */
       });
 
-//   const socket = io('wss://ws-feed.exchange.coinbase.com');
-
-//   console.log("first")
-
-//   socket.on('connect', () => {
-//     console.log('Socket.IO connection established.');
-//   });
-
-//   // Subscription request
-//   const subscribeRequest = {
-//     type: 'subscribe',
-//     product_ids: ['ETH-USD', 'BTC-USD'],
-//     channels: ['ticker'],
-//   };
-
-//   const ms = await socket.emit('subscribe', subscribeRequest);
-//   console.log(ms)
-//   const ms = await socket.emit({
-//     "type": "subscribe",
-//     "channels": [{ "name": "status"});
-//   console.log(ms)
-
-
-//   socket.on('message', (data) => {
-//     console.log('Received ticker data:', data);
-//     // Handle the received ticker data as needed
-//   });
-
-//   socket.on('disconnect', () => {
-//     console.log('Socket.IO connection closed.');
-//   });
-
-//   socket.on('error', (error) => {
-//     console.error('Socket.IO error:', error.message);
-//   });
 }
 
 // Wrap the connectToDatabase function with express-async-handler

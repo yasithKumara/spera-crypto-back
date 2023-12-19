@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./src/bin/www",
     "dev": "nodemon ./src/bin/www",
-    "test": "SET NODE_ENV=test && SET ATLAS_URI=mongodb+srv://yasithkumara:Sp6vqRXfhbBy37tO@yasithcluster0.vauv2ub.mongodb.net/spera && SET PORT=3000 && SET JWT_SECRET=24AEEA8F718CD9E6D0DF650BDA83BDEAAAC35D5742C5C44F59C55A0ABFAC5EF6 && mocha ./test/routes/getUsers.test.js"
+    "test": "SET NODE_ENV=test && SET ATLAS_URI=mongodb+srv://yasithkumara:Sp6vqRXfhbBy37tO@yasithcluster0.vauv2ub.mongodb.net/spera && SET PORT=3000 && SET JWT_SECRET=24AEEA8F718CD9E6D0DF650BDA83BDEAAAC35D5742C5C44F59C55A0ABFAC5EF6 && mocha ./test/routes/*"
   },
   "dependencies": {
     "axios": "^1.6.2",

@@ -4,6 +4,9 @@ const {
   registerUser,
   loginUser,
 } = require("../controllers/authController");
+const userValidation = require("../validations/userValidation");
+const validate = require("../utils/Validate");
+
 
 /**
  * @swagger
@@ -47,7 +50,6 @@ const {
  *               _id: "user_id"
  *               name: "user_name"
  *               email: "user_email@example.com"
- *               token: "generated_token"
  *       '400':
  *         description: Bad Request. Invalid user data or user already exists.
  *         content:
@@ -61,7 +63,7 @@ const {
  *             example:
  *               error: "Internal Server Error"
  */
-router.post("/register", registerUser);
+router.post("/register", validate(userValidation.createUser), registerUser);
 
 /**
  * @swagger

@@ -1,18 +1,19 @@
 const {ApiError} = require("../utils/ApiError");
 const userRepository = require("../repositories/userRepository");
 const errors= require("../utils/error-messages");
+const asyncHandler = require("express-async-handler");
 
 /**
  * create user
  * @param user
  */
- const createUser = async (user) => {
+ const createUser = asyncHandler(async (user) => {
   const found = await userRepository.findOne({ email: user?.email });
   if (found) {
     throw new ApiError(errors.UserExists);
   }
   return userRepository.save(user);
-};
+});
 
 /**
  * get users
@@ -41,9 +42,6 @@ const errors= require("../utils/error-messages");
 const getUser = async (filter) => {
     console.log(filter)
     const user = await userRepository.findOne(filter);
-    if (!user) {
-      throw new ApiError(errors.UserNotFound);
-    }
     return user;
   };
 
