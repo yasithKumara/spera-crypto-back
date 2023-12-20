@@ -26,7 +26,7 @@ asyncConnectToDatabase()
   })
   .then(() => {
     // Fetch prices every 5 minutes
-    setInterval(() => asyncFetchPrices(), 5 * 60 * 1000);
+    //setInterval(() => asyncFetchPrices(), 5 * 60 * 1000);
   }).then(() => {
     // connect to realtime feed to get price using websockets
     asyncSubscribeToCoinbaseTicker()
