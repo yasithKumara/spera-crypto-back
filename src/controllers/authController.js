@@ -4,6 +4,8 @@ const User = require("../models/userModels");
 const jwt = require("jsonwebtoken");
 const userService = require("../services/userService");
 const httpStatus = require("http-status");
+const errors= require("../utils/error-messages");
+const {ApiError} = require("../utils/ApiError");
 
 /**
  * Register a new user
@@ -58,7 +60,7 @@ const loginUser = asyncHandler(async (req, res) => {
   });
   } else {
     res.status(400);
-    throw new Error("Invalid user data");
+    throw new ApiError(errors.AuthFailed)
   }
 });
 

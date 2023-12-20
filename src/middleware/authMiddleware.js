@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/userModels");
 const asyncHandler = require("express-async-handler");
 const errors= require("../utils/error-messages");
+const {ApiError} = require("../utils/ApiError");
 
 const protect = asyncHandler(async (req, res, next) => {
   let token;
@@ -31,7 +32,7 @@ const protect = asyncHandler(async (req, res, next) => {
 
   if (!token) {
     res.status(401);
-    throw new Error(errors.Unauthorized);
+    throw new ApiError(errors.Unauthorized);
   }
 }); 
 
@@ -55,7 +56,7 @@ const isOwner = asyncHandler(async (req, res, next) => {
 
       if(!decoded.id === req.params.userId){
         res.status(401);
-        throw new Error("Not Authorized");
+        throw new ApiError(errors.Unauthorized)
       }
 
       req.user = user
@@ -63,13 +64,13 @@ const isOwner = asyncHandler(async (req, res, next) => {
       next();
     } catch (error) {
       res.status(401);
-      throw new Error("Not Authorized");
+      throw new ApiError(errors.Unauthorized)
     }
   }
 
   if (!token) {
     res.status(401);
-    throw new Error("Not Authorized");
+    throw new ApiError(errors.Unauthorized)
   }
 }); 
 
@@ -92,20 +93,20 @@ const isAdmin = asyncHandler(async (req, res, next) => {
 
       if(!user.isAdmin){
         res.status(401);
-        throw new Error("Not Authorized");
+        throw new ApiError(errors.Unauthorized)
       }
 
       next();
     } catch (error) {
       res.status(401);
       res.statusCode(401);
-      throw new Error("Not Authorized");
+      throw new ApiError(errors.Unauthorized)
     }
   }
 
   if (!token) {
     res.status(401);
-    throw new Error("Not Authorized");
+    throw new ApiError(errors.Unauthorized)
   }
 }); 
 
